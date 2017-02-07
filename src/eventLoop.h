@@ -16,7 +16,7 @@ class EventLoop{
   public:
     EventLoop();
     ~EventLoop();
-    void AddFile(TString file_name);
+    //void AddFile(TString file_name);
     void RunAndGun(TString file_name);
 
   private:

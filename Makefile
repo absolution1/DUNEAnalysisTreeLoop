@@ -53,7 +53,7 @@ so:
 Selection:
 	@echo "Compiling Selection"
 	@$(CXX) $(CXXFLAGS) -Isrc -c app/runSelection.cxx -o lib/exe/runSelection.o 
-	@$(LD) $(LDFLAGS) -Llib -Wl,-rpath=/dune/app/users/dbrailsf/diffusion/selection/soft/lib lib/exe/runSelection.o -o Selection.exe -lSelection 
+	@$(LD) $(LDFLAGS) -Llib -Wl,-rpath=/dune/app/users/dbrailsf/oscillation/nu_mu/framework/soft/lib lib/exe/runSelection.o -o Selection.exe -lSelection 
 
 directories:
 	@$(MKDIR_P) lib
