@@ -1,3 +1,5 @@
+#ifndef H_INPUTMANAGER_SEEN
+#define H_INPUTMANAGER_SEEN
 //STL
 #include <fstream>
 #include <limits>
@@ -17,3 +19,4 @@ class InputManager {
     std::fstream fFileList; //The list of files
     TChain *fChain; //The current file to be looked at
 };
+#endif
