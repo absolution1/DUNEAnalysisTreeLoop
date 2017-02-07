@@ -39,7 +39,7 @@ OBJDIR=$(addprefix lib/,$(notdir $(OBJ)))
 
 
 
-all: directories directories_exe $(OBJDIR) so Selection FitCounterPositions
+all: directories directories_exe $(OBJDIR) so Selection
 
 lib/%.o: src/%.cxx
 	@echo "Compiling $<"
@@ -54,13 +54,6 @@ Selection:
 	@echo "Compiling Selection"
 	@$(CXX) $(CXXFLAGS) -Isrc -c app/runSelection.cxx -o lib/exe/runSelection.o 
 	@$(LD) $(LDFLAGS) -Llib -Wl,-rpath=/dune/app/users/dbrailsf/diffusion/selection/soft/lib lib/exe/runSelection.o -o Selection.exe -lSelection 
-
-FitCounterPositions:
-	@echo "Compiling FitCounterPositions"
-	@$(CXX) $(CXXFLAGS) -Isrc -c app/runFitCounterPositions.cxx -o lib/exe/runFitCounterPositions.o 
-	@$(LD) $(LDFLAGS) -Llib -Wl,-rpath=/dune/app/users/dbrailsf/diffusion/selection/soft/lib lib/exe/runFitCounterPositions.o -o FitCounterPositions.exe -lFitCounterPositions 
-
-
 
 directories:
 	@$(MKDIR_P) lib

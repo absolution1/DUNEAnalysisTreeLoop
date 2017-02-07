@@ -6,12 +6,10 @@ EventLoop::EventLoop::EventLoop(){
   fChain->SetBranchAddress("SubRun",&fSubRun);
   fChain->SetBranchAddress("Event",&fEvent);
 
-  fSelectDiffusionTracks = new SelectDiffusionTracks();
   fGlobalEventNo=0;
 
 }
 EventLoop::~EventLoop(){
-  delete fSelectDiffusionTracks;
 }
 
 void EventLoop::AddFile(TString file_name){
@@ -25,7 +23,6 @@ void EventLoop::RunAndGun(TString file_name){
   MCParticleFactory truth_factory(fChain);
   RecoTrackFactory reco_factory(fChain);
   RecoHitFactory hit_factory(fChain);
-  AuxDetFactory auxdet_factory(fChain);
 
   //Create the selector
   Selector selector;
@@ -58,9 +55,7 @@ void EventLoop::RunAndGun(TString file_name){
       */
 
       std::vector<RecoHit> reco_hits = hit_factory.GetRecoHitVector();
-      std::vector<AuxDet> aux_dets = auxdet_factory.GetAuxDetVector();
   
-      fSelectDiffusionTracks->AccumulateStats(reco_hits,aux_dets);
 
 
       //output_manager.FillEvTree();

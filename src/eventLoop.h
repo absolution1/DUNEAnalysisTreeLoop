@@ -8,9 +8,7 @@
 #include "MCParticleFactory.h"
 #include "recoTrackFactory.h"
 #include "recoHitFactory.h"
-#include "auxDetFactory.h"
 #include "selector.h"
-#include "SelectDiffusionTracks.h"
 #include "truthUtils.h"
 #include "outputManager.h"
 
@@ -30,5 +28,4 @@ class EventLoop{
 
     void PrintEventNumber();
     Long64_t fGlobalEventNo;
-    SelectDiffusionTracks *fSelectDiffusionTracks;
 };
