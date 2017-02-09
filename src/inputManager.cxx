@@ -4,7 +4,7 @@ InputManager::InputManager::InputManager(std::string list_name)
   :
     fFileList(list_name)
 {
-  fChain = new TChain("AnalysisTree/anatree");
+  fChain = new TChain("analysistree/anatree");
 }
 
 
@@ -21,5 +21,11 @@ bool InputManager::GetNextFile(){
   std::cout<<"Loading file: " << file_name << std::endl;
   fChain->Reset();
   fChain->AddFile(file_name.c_str());
+  //Check if the TChain has any branches after loading
+  if (fChain->GetListOfBranches() == 0){
+    std::cout<<"Found 0 branches in the TChain -> file is possibly missing the anatree TTree"<<std::endl;
+    fChain->Reset();
+    return false;
+  }
   return true;
 }
