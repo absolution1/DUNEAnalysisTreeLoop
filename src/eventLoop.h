@@ -11,16 +11,19 @@
 #include "selector.h"
 #include "truthUtils.h"
 #include "outputManager.h"
+#include "inputManager.h"
 
 class EventLoop{
   public:
-    EventLoop();
+    EventLoop(std::string input_list);
     ~EventLoop();
     //void AddFile(TString file_name);
-    void RunAndGun(TString file_name);
+    void RunAndGun();
 
   private:
-    TChain *fChain;
+
+    InputManager fInputManager;
+    //TChain *fChain;
 
     Int_t fRun;
     Int_t fSubRun;

@@ -1,9 +1,10 @@
 #include "eventLoop.h"
 
-EventLoop::EventLoop::EventLoop(){
-  fGlobalEventNo=0;
+EventLoop::EventLoop::EventLoop(std::string input_list)
+  :
+    fInputManager(input_list),
+    fGlobalEventNo(0){}
 
-}
 EventLoop::~EventLoop(){
 }
 
@@ -12,7 +13,16 @@ EventLoop::~EventLoop(){
 //  return;
 //}
 
-void EventLoop::RunAndGun(TString file_name){
+void EventLoop::RunAndGun(){
+
+  TTree *current_tree = fInputManager.GetCurrentFile();
+  MCParticleFactory particle_factory(current_tree);
+  while(fInputManager.GetNextFile()){
+    for (UInt_t i_entry = 0; i_entry < current_tree->GetEntries(); i_entry++){
+      current_tree->GetEntry(i_entry);
+      particle_factory.Print();
+    }
+  }
   /*
   AddFile(file_name);
   //Initialise the factories

@@ -10,15 +10,8 @@
 #include "TPRegexp.h"
 //CUSTOM
 #include "eventLoop.h"
-#include "inputManager.h"
 
 int main (int argc, char ** argv){
-
-  InputManager input("inputlist.txt");
-  for (int i = 0; i < 10; i++){
-
-    input.GetNextFile();
-  }
 
 
   /*
@@ -56,5 +49,8 @@ int main (int argc, char ** argv){
   //loop.RunAndGun();
 
   */
+
+  EventLoop loop("inputlist.txt");
+  loop.RunAndGun();
   return 0;
 }
