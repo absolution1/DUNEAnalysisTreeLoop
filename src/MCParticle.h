@@ -34,7 +34,7 @@ class MCParticle{
         Int_t in_NumberDaughters,
         Int_t in_Mother,
         Int_t in_TrackId,
-        Int_t in_MergeId,
+        Int_t in_MergedId,
         //Int_t in_origin,
         Int_t in_MCTruthIndex
           ) : 
@@ -48,7 +48,7 @@ class MCParticle{
             NumberDaughters(in_NumberDaughters),
             Mother(in_Mother),
             TrackId(in_TrackId),
-            MergeId(in_MergeId),
+            MergedId(in_MergedId),
             MCTruthIndex(in_MCTruthIndex) {};
 
     Int_t PDG;
@@ -61,7 +61,7 @@ class MCParticle{
     Int_t NumberDaughters;
     Int_t Mother;
     Int_t TrackId;
-    Int_t MergeId;
+    Int_t MergedId;
     Int_t MCTruthIndex;
 
 };

@@ -1,7 +1,7 @@
 #ifndef DEFINITIONS_H_SEEN
 #define DEFINITIONS_H_SEEN
 namespace GlobalDefs{
-  const unsigned int kNMaxCounters = 200;
+  const unsigned int kNMaxMCNeutrinos = 50;
   const unsigned int kNMaxMCParticles = 4500;
   const unsigned int kNMaxMCParticleDaughters = 100;
   const unsigned int kNMaxMCParticleTPCs = 20;

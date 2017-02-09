@@ -5,6 +5,7 @@
 #include "TChain.h"
 #include "TString.h"
 //CUSTOM
+#include "MCNeutrinoFactory.h"
 #include "MCParticleFactory.h"
 #include "recoTrackFactory.h"
 #include "recoHitFactory.h"

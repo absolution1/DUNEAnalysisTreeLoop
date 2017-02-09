@@ -12,7 +12,7 @@ class MCParticleFactory{
     MCParticleFactory(TTree *tree);
     //std::vector<MCParticle> GetParticleVector();
     void Print();
-    Int_t GetNMCParticles() { return fNMCParticles; };
+    UInt_t GetNMCParticles() { return fNMCParticles; };
     MCParticle GetMCParticle(unsigned int index);
 
   private:
@@ -42,7 +42,7 @@ class MCParticleFactory{
     Int_t fNumberDaughters[GlobalDefs::kNMaxMCParticles];
     Int_t fMother[GlobalDefs::kNMaxMCParticles];
     Int_t fTrackId[GlobalDefs::kNMaxMCParticles];
-    Int_t fMergeId[GlobalDefs::kNMaxMCParticles];
+    Int_t fMergedId[GlobalDefs::kNMaxMCParticles];
     Int_t forigin[GlobalDefs::kNMaxMCParticles];
     Int_t fMCTruthIndex[GlobalDefs::kNMaxMCParticles];
 

@@ -27,7 +27,7 @@ MCParticleFactory::MCParticleFactory::MCParticleFactory(TTree *tree){
   tree->SetBranchAddress("NumberDaughters",&fNumberDaughters);
   tree->SetBranchAddress("Mother",         &fMother         );
   tree->SetBranchAddress("TrackId",        &fTrackId        );
-  tree->SetBranchAddress("MergeId",        &fMergeId        );
+  tree->SetBranchAddress("MergedId",        &fMergedId      );
   tree->SetBranchAddress("origin",         &forigin         );
   tree->SetBranchAddress("MCTruthIndex",   &fMCTruthIndex   );
 }
@@ -71,7 +71,7 @@ MCParticle MCParticleFactory::GetMCParticle(unsigned int index){
         fNumberDaughters[index],
         fMother[index],
         fTrackId[index],
-        fMergeId[index],
+        fMergedId[index],
         //forigin[index],
         fMCTruthIndex[index]
       );
