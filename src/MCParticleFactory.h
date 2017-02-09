@@ -12,6 +12,8 @@ class MCParticleFactory{
     MCParticleFactory(TTree *tree);
     //std::vector<MCParticle> GetParticleVector();
     void Print();
+    Int_t GetNMCParticles() { return fNMCParticles; };
+    MCParticle GetMCParticle(unsigned int index);
 
   private:
     UInt_t fNMCParticles;

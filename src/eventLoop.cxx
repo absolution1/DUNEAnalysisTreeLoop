@@ -20,7 +20,9 @@ void EventLoop::RunAndGun(){
   while(fInputManager.GetNextFile()){
     for (UInt_t i_entry = 0; i_entry < current_tree->GetEntries(); i_entry++){
       current_tree->GetEntry(i_entry);
-      particle_factory.Print();
+      for (int i = 0; i < particle_factory.GetNMCParticles(); i++){
+        std::cout<<"Particle: " << i << "  PDG: " << particle_factory.GetMCParticle(i).PDG << std::endl;
+      }
     }
   }
   /*
