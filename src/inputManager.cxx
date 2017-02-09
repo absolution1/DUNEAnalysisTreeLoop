@@ -14,17 +14,17 @@ bool InputManager::GetNextFile(){
   bool success = std::getline(fFileList,file_name);
   if (!success){
     std::cout<<"No more files!"<<std::endl;
-    fChain->Reset();
+    fChain->ResetAfterMerge(NULL);
     return false;
   }
 
   std::cout<<"Loading file: " << file_name << std::endl;
-  fChain->Reset();
+  fChain->ResetAfterMerge(NULL);
   fChain->AddFile(file_name.c_str());
   //Check if the TChain has any branches after loading
   if (fChain->GetListOfBranches() == 0){
     std::cout<<"Found 0 branches in the TChain -> file is possibly missing the anatree TTree"<<std::endl;
-    fChain->Reset();
+    fChain->ResetAfterMerge(NULL);
     return false;
   }
   return true;
