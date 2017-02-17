@@ -21,6 +21,33 @@ RecoHitFactory::RecoHitFactory::RecoHitFactory(TTree *tree){
   tree->SetBranchAddress("hit_trkKey"            , &hit_trkKey);
 }
 
+RecoHit RecoHitFactory::GetRecoHit(unsigned int index){
+  RecoHit hit(
+      hit_tpc[index],
+      hit_plane[index],
+      hit_wire[index],
+      hit_channel[index],
+      hit_peakT[index],
+      hit_charge[index],
+      hit_ph[index],
+      hit_startT[index],
+      hit_endT[index],
+      hit_rms[index],
+      hit_goodnessOfFit[index],
+      hit_multiplicity[index],
+      hit_trueX[index],
+      hit_nelec[index],
+      hit_energy[index],
+      hit_trkid[index],
+      hit_trkKey[index]
+      );
+
+  return hit;
+}
+
+
+
+
 void RecoHitFactory::Print(){
   for (int i = 0; i < fNRecoHits; i++){
     std::cout<<"Hit: " << i << "  ph: " << hit_ph[i] << std::endl;

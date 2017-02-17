@@ -2,83 +2,67 @@
 #define RECOHIT_H_SEEN
 //STL
 //ROOT
-#include "TVector3.h"
 //CUSTOM
 
 class RecoHit{
   public:
-    RecoHit(Int_t RecoHitStartTick,
-        Int_t RecoHitEndTick,
-        Double_t RecoHitPeakTime,
-        Double_t RecoHitSigmaPeakTime,
-        Double_t RecoHitRMS,
-        Double_t RecoHitPeakAmplitude,
-        Double_t RecoHitSigmaPeakAmplitude,
-        Double_t RecoHitSummedADC,
-        Double_t RecoHitIntegral,
-        Double_t RecoHitSigmaIntegral,
-        Int_t RecoHitMultiplicity,
-        Int_t RecoHitLocalIndex,
-        Double_t RecoHitGoodnessOfFit,
-        Int_t RecoHitDegreesOfFreedom,
-        UInt_t RecoHitChannel,
-        Int_t RecoHitView,
-        UInt_t RecoHitWireID,
-        UInt_t RecoHitPlaneID,
-        UInt_t RecoHitTPCID,
-        Bool_t RecoHitIsValid,
-        UInt_t RecoHitCryostatID,
-        Double_t RecoHitWireCenterX,
-        Double_t RecoHitWireCenterY,
-        Double_t RecoHitWireCenterZ) 
-          :
-            StartTick(RecoHitStartTick),
-            EndTick(RecoHitEndTick),
-            PeakTime(RecoHitPeakTime),
-            SigmaPeakTime(RecoHitSigmaPeakTime),
-            RMS(RecoHitRMS),
-            PeakAmplitude(RecoHitPeakAmplitude),
-            SigmaPeakAmplitude(RecoHitSigmaPeakAmplitude),
-            SummedADC(RecoHitSummedADC),
-            Integral(RecoHitIntegral),
-            SigmaIntegral(RecoHitSigmaIntegral),
-            Multiplicity(RecoHitMultiplicity),
-            LocalIndex(RecoHitLocalIndex),
-            GoodnessOfFit(RecoHitGoodnessOfFit),
-            DegreesOfFreedom(RecoHitDegreesOfFreedom),
-            Channel(RecoHitChannel),
-            View(RecoHitView),
-            WireID(RecoHitWireID),
-            PlaneID(RecoHitPlaneID),
-            TPCID(RecoHitTPCID),
-            IsValid(RecoHitIsValid),
-            CryostatID(RecoHitCryostatID),
-            WireCenter(RecoHitWireCenterX,RecoHitWireCenterY,RecoHitWireCenterZ){};
+    RecoHit(
+        Short_t  in_TPC,
+        Short_t  in_Plane,
+        Short_t  in_Wire,
+        Short_t  in_Channel,
+        Float_t  in_PeakT,
+        Float_t  in_Charge,
+        Float_t  in_PulseHeight,
+        Float_t  in_StartTime,
+        Float_t  in_EndTime,
+        Float_t  in_RMS,
+        Float_t  in_GoodnessOfFit,
+        Short_t  in_Multiplicity,
+        Float_t  in_TrueX,
+        Float_t  in_NElectrons,
+        Float_t  in_Energy,
+        Short_t  in_TrackID,
+        Short_t  in_TrackKey
+        ) :
+          TPC          (in_TPC),
+          Plane        (in_Plane),
+          Wire         (in_Wire),
+          Channel      (in_Channel),
+          PeakT        (in_PeakT),
+          Charge       (in_Charge),
+          PulseHeight  (in_PulseHeight),
+          StartTime    (in_StartTime),
+          EndTime      (in_EndTime),
+          RMS          (in_RMS),
+          GoodnessOfFit(in_GoodnessOfFit),
+          Multiplicity (in_Multiplicity),
+          TrueX        (in_TrueX),
+          NElectrons   (in_NElectrons),
+          Energy       (in_Energy),
+          TrackID      (in_TrackID),
+          TrackKey     (in_TrackKey) {}; //Constructor
 
-    Int_t StartTick;
-    Int_t EndTick;
-    Double_t PeakTime;
-    Double_t SigmaPeakTime;
-    Double_t RMS;
-    Double_t PeakAmplitude;
-    Double_t SigmaPeakAmplitude;
-    Double_t SummedADC;
-    Double_t Integral;
-    Double_t SigmaIntegral;
-    Int_t Multiplicity;
-    Int_t LocalIndex;
-    Double_t GoodnessOfFit;
-    Int_t DegreesOfFreedom;
-    UInt_t Channel;
-    Int_t View;
-    UInt_t WireID;
-    UInt_t PlaneID;
-    UInt_t TPCID;
-    Bool_t IsValid;
-    UInt_t CryostatID;
-    TVector3 WireCenter;
+
+
+    Short_t  TPC;        //tpc number
+    Short_t  Plane;      //plane number
+    Short_t  Wire;       //wire number
+    Short_t  Channel;    //channel ID
+    Float_t  PeakT;      //peak time
+    Float_t  Charge;     //charge (area)
+    Float_t  PulseHeight;         //amplitude
+    Float_t  StartTime;     //hit start time
+    Float_t  EndTime;       //hit end time
+    Float_t  RMS;       //hit rms from the hit object
+    Float_t  GoodnessOfFit; //chi2/dof goodness of fit 
+    Short_t  Multiplicity;  //multiplicity of the given hit					 
+    Float_t  TrueX;      // hit true X (cm)
+    Float_t  NElectrons;     //hit number of electrons
+    Float_t  Energy;       //hit energy
+    Short_t  TrackID;      //is this hit associated with a reco track?
+    Short_t  TrackKey;      //is this hit associated with a reco track,  if so associate a unique track key ID?
 
   private:
-
 };
 #endif

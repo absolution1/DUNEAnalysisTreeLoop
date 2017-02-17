@@ -5,6 +5,7 @@
 #include "TTree.h"
 //CUSTOM
 #include "definitions.h"
+#include "recoHit.h"
 
 class RecoHitFactory{
   public:
@@ -12,7 +13,7 @@ class RecoHitFactory{
     //std::vector<RecoHit> GetParticleVector();
     void Print();
     UInt_t GetNRecoHits() { return fNRecoHits; };
-    //RecoHit GetRecoHit(unsigned int index);
+    RecoHit GetRecoHit(unsigned int index);
 
   private:
     Int_t    fNRecoHits;                  //number of hits
