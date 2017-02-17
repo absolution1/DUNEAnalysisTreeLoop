@@ -18,13 +18,10 @@ void EventLoop::RunAndGun(){
   TTree *current_tree = fInputManager.GetCurrentFile();
   MCParticleFactory particle_factory(current_tree);
   MCNeutrinoFactory neutrino_factory(current_tree);
+  RecoHitFactory recohit_factory(current_tree);
   while(fInputManager.GetNextFile()){
     for (UInt_t i_entry = 0; i_entry < current_tree->GetEntries(); i_entry++){
       current_tree->GetEntry(i_entry);
-      neutrino_factory.Print();
-      for (int i = 0; i < neutrino_factory.GetNMCNeutrinos(); i++){
-        std::cout<<"Nu Q2: " << neutrino_factory.GetMCNeutrino(i).Q2 << std::endl;
-      }
     }
   }
   /*

@@ -1,69 +1,30 @@
 #include "recoHitFactory.h"
 
 RecoHitFactory::RecoHitFactory::RecoHitFactory(TTree *tree){
-  tree->SetBranchAddress("NAllRecoHits",&fNRecoHits);
-  tree->SetBranchAddress("AllRecoHitTrackID",&fRecoHitTrackID);
-  tree->SetBranchAddress("AllRecoHitStartTick",&fRecoHitStartTick);
-  tree->SetBranchAddress("AllRecoHitEndTick",&fRecoHitEndTick);
-  tree->SetBranchAddress("AllRecoHitPeakTime",&fRecoHitPeakTime);
-  tree->SetBranchAddress("AllRecoHitSigmaPeakTime",&fRecoHitSigmaPeakTime);
-  tree->SetBranchAddress("AllRecoHitRMS",&fRecoHitRMS);
-  tree->SetBranchAddress("AllRecoHitPeakAmplitude",&fRecoHitPeakAmplitude);
-  tree->SetBranchAddress("AllRecoHitSigmaPeakAmplitude",&fRecoHitSigmaPeakAmplitude);
-  tree->SetBranchAddress("AllRecoHitSummedADC",&fRecoHitSummedADC);
-  tree->SetBranchAddress("AllRecoHitIntegral",&fRecoHitIntegral);
-  tree->SetBranchAddress("AllRecoHitSigmaIntegral",&fRecoHitSigmaIntegral);
-  tree->SetBranchAddress("AllRecoHitMultiplicity",&fRecoHitMultiplicity);
-  tree->SetBranchAddress("AllRecoHitLocalIndex",&fRecoHitLocalIndex);
-  tree->SetBranchAddress("AllRecoHitGoodnessOfFit",&fRecoHitGoodnessOfFit);
-  tree->SetBranchAddress("AllRecoHitDegreesOfFreedom",&fRecoHitDegreesOfFreedom);
-  tree->SetBranchAddress("AllRecoHitChannel",&fRecoHitChannel);
-  tree->SetBranchAddress("AllRecoHitView",&fRecoHitView);
-  tree->SetBranchAddress("AllRecoHitWireID",&fRecoHitWireID);
-  tree->SetBranchAddress("AllRecoHitPlaneID",&fRecoHitPlaneID);
-  tree->SetBranchAddress("AllRecoHitTPCID",&fRecoHitTPCID);
-  tree->SetBranchAddress("AllRecoHitIsValid",&fRecoHitIsValid);
-  tree->SetBranchAddress("AllRecoHitCryostatID",&fRecoHitCryostatID);
-  tree->SetBranchAddress("AllRecoHitWireCenterX",&fRecoHitWireCenterX);
-  tree->SetBranchAddress("AllRecoHitWireCenterY",&fRecoHitWireCenterY);
-  tree->SetBranchAddress("AllRecoHitWireCenterZ",&fRecoHitWireCenterZ);
-
-
-
+  tree->SetBranchAddress("no_hits", &fNRecoHits);
+  tree->SetBranchAddress("hit_tpc"               , &hit_tpc);
+  tree->SetBranchAddress("hit_plane"             , &hit_plane);
+  tree->SetBranchAddress("hit_wire"              , &hit_wire);
+  tree->SetBranchAddress("hit_channel"           , &hit_channel);
+  tree->SetBranchAddress("hit_peakT"             , &hit_peakT);
+  tree->SetBranchAddress("hit_charge"            , &hit_charge);
+  tree->SetBranchAddress("hit_ph"                , &hit_ph);
+  tree->SetBranchAddress("hit_startT"            , &hit_startT);
+  tree->SetBranchAddress("hit_endT"              , &hit_endT);
+  tree->SetBranchAddress("hit_rms"               , &hit_rms);
+  tree->SetBranchAddress("hit_goodnessOfFit"     , &hit_goodnessOfFit);
+  tree->SetBranchAddress("hit_multiplicity"      , &hit_multiplicity);
+  tree->SetBranchAddress("hit_trueX"             , &hit_trueX);
+  tree->SetBranchAddress("hit_nelec"             , &hit_nelec);
+  tree->SetBranchAddress("hit_energy"            , &hit_energy);
+  tree->SetBranchAddress("hit_trkid"             , &hit_trkid);
+  tree->SetBranchAddress("hit_trkKey"            , &hit_trkKey);
 }
 
-std::vector<RecoHit> RecoHitFactory::GetRecoHitVector(){
-
-  std::vector<RecoHit> reco_hits;
-  for (UInt_t i = 0; i < fNRecoHits; i++){
-
-    RecoHit reco_hit(fRecoHitStartTick[i],
-        fRecoHitEndTick[i],
-        fRecoHitPeakTime[i],
-        fRecoHitSigmaPeakTime[i],
-        fRecoHitRMS[i],
-        fRecoHitPeakAmplitude[i],
-        fRecoHitSigmaPeakAmplitude[i],
-        fRecoHitSummedADC[i],
-        fRecoHitIntegral[i],
-        fRecoHitSigmaIntegral[i],
-        fRecoHitMultiplicity[i],
-        fRecoHitLocalIndex[i],
-        fRecoHitGoodnessOfFit[i],
-        fRecoHitDegreesOfFreedom[i],
-        fRecoHitChannel[i],
-        fRecoHitView[i],
-        fRecoHitWireID[i],
-        fRecoHitPlaneID[i],
-        fRecoHitTPCID[i],
-        fRecoHitIsValid[i],
-        fRecoHitCryostatID[i],
-        fRecoHitWireCenterX[i],
-        fRecoHitWireCenterY[i],
-        fRecoHitWireCenterZ[i]);
-
-    reco_hits.push_back(reco_hit);
+void RecoHitFactory::Print(){
+  for (int i = 0; i < fNRecoHits; i++){
+    std::cout<<"Hit: " << i << "  ph: " << hit_ph[i] << std::endl;
   }
-
-  return reco_hits;
+  return;
 }
+
