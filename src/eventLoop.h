@@ -9,9 +9,6 @@
 #include "MCParticleFactory.h"
 #include "recoTrackFactory.h"
 #include "recoHitFactory.h"
-#include "selector.h"
-#include "truthUtils.h"
-#include "outputManager.h"
 #include "inputManager.h"
 
 class EventLoop{

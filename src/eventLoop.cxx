@@ -19,9 +19,14 @@ void EventLoop::RunAndGun(){
   MCParticleFactory particle_factory(current_tree);
   MCNeutrinoFactory neutrino_factory(current_tree);
   RecoHitFactory recohit_factory(current_tree);
+
+  RecoTrackFactory *recotrack_factory = new RecoTrackFactory(current_tree,"pmtrack");
   while(fInputManager.GetNextFile()){
+
     for (UInt_t i_entry = 0; i_entry < current_tree->GetEntries(); i_entry++){
+
       current_tree->GetEntry(i_entry);
+     // recotrack_factory->Print();
     }
   }
   /*

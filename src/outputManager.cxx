@@ -1,5 +1,6 @@
 #include "outputManager.h"
 
+/*
 OutputManager::OutputManager::OutputManager(TString output_file_name){
   fOutputFile = new TFile(output_file_name,"RECREATE");
   fSelTree = new TTree("SelObj","SelObj");
@@ -57,26 +58,6 @@ OutputManager::OutputManager::OutputManager(TString output_file_name){
 void OutputManager::StoreRecoTrack(const RecoTrack &reco_track){
 
 
-  /*
-  if (true_particle){
-    TruthTrigger          = TruthUtils::GetExternalTrigger(*true_particle);
-    TruthPDG              = true_particle->PDG;
-    TruthStartMomentumT         = true_particle->StartMomentum.T();
-    TruthStartMomentumX         = true_particle->StartMomentum.X();
-    TruthStartMomentumY         = true_particle->StartMomentum.Y();
-    TruthStartMomentumZ         = true_particle->StartMomentum.Z();
-  }
-  else {
-    TruthTrigger                = TriggerDefs::kNoTrigger; 
-    TruthPDG                    = -99999;
-    TruthStartMomentumT         = -99999.;
-    TruthStartMomentumX         = -99999.;
-    TruthStartMomentumY         = -99999.;
-    TruthStartMomentumZ         = -99999.;
-  }
-
-  CutLevel              = cut_level;
-  */
   ID                    = reco_track.ID;             
   G4ID                  = reco_track.G4ID;                  
   NumberTrajectoryPoints= reco_track.NumberTrajectoryPoints;
@@ -218,3 +199,4 @@ OutputManager::~OutputManager(){
   delete fEvTree;
   //delete fOutputFile;
 }
+*/

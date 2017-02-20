@@ -1,3 +1,4 @@
+/*
 #include "truthUtils.h"
 
 const MCParticle* TruthUtils::GetMCParticleByID(const std::vector<MCParticle> &particles, Int_t id){
@@ -59,3 +60,4 @@ Bool_t TruthUtils::IsSignal(const MCParticle &particle){
 
   return true;
 }
+*/

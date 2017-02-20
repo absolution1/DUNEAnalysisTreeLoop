@@ -11,6 +11,7 @@
 #include "definitions.h"
 
 class OutputManager{
+  /*
   public:
     OutputManager(TString output_file_name);
     void StoreRecoTrack(const RecoTrack &reco_track);
@@ -76,4 +77,5 @@ class OutputManager{
     UInt_t NCuts;
     UInt_t NObjPerCutLevel[GlobalDefs::kNMaxCuts];
     UInt_t NSigObjPerCutLevel[GlobalDefs::kNMaxCuts];
+    */
 };
