@@ -6,9 +6,10 @@ namespace GlobalDefs{
   const unsigned int kNMaxMCParticleDaughters = 100;
   const unsigned int kNMaxMCParticleTPCs = 20;
   const unsigned int kNMaxMCParticleCounters = 20;
-  const unsigned int kNMaxRecoTracks = 2000;
+  const unsigned int kNMaxRecoTracks = 300;
+  const unsigned int kNMaxRecoTrackHits = 2000;
   //const unsigned int kNMaxRecoHits = 200000;
-  const unsigned int kNMaxRecoHits = 20000;
+  const unsigned int kNMaxRecoHits = 40000;
   const unsigned int kNMaxCuts = 2;
 };
 
