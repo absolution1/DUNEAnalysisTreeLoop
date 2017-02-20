@@ -1,128 +1,96 @@
 #include "recoTrackFactory.h"
 
-RecoTrackFactory::RecoTrackFactory::RecoTrackFactory(TTree *tree){
-  tree->SetBranchAddress("NRecoTracks",&fNRecoTracks);
-  tree->SetBranchAddress("RecoTrackID",&fRecoTrackID);
-  tree->SetBranchAddress("RecoTrackG4ID",&fRecoTrackG4ID);
-  tree->SetBranchAddress("RecoTrackNumberTrajectoryPoints",&fRecoTrackNumberTrajectoryPoints);
-  tree->SetBranchAddress("RecoTrackFrontPosition",&fRecoTrackFrontPosition);
-  tree->SetBranchAddress("RecoTrackFrontDirection",&fRecoTrackFrontDirection);
-  tree->SetBranchAddress("RecoTrackBackPosition",&fRecoTrackBackPosition);
-  tree->SetBranchAddress("RecoTrackBackDirection",&fRecoTrackBackDirection);
-  tree->SetBranchAddress("RecoTrackLength",&fRecoTrackLength);
-  tree->SetBranchAddress("RecoTrackValidT0",&fRecoTrackValidT0);
-  tree->SetBranchAddress("RecoTrackT0",&fRecoTrackT0);
-  tree->SetBranchAddress("RecoTrackT0CounterIDs",&fRecoTrackT0CounterIDs);
-  tree->SetBranchAddress("RecoTrackFittedPosition",&fRecoTrackFittedPosition);
-  tree->SetBranchAddress("RecoTrackFittedDirection",&fRecoTrackFittedDirection);
-  tree->SetBranchAddress("RecoTrackFittedMetric",&fRecoTrackFittedMetric);
-  tree->SetBranchAddress("RecoTrackFittedValidT0",&fRecoTrackFittedValidT0);
-  tree->SetBranchAddress("RecoTrackFittedT0",&fRecoTrackFittedT0);
-  tree->SetBranchAddress("RecoTrackFittedT0CounterIDs",&fRecoTrackFittedT0CounterIDs);
+RecoTrackFactory::RecoTrackFactory::RecoTrackFactory(TTree *tree, TString reco_label){
 
-  tree->SetBranchAddress("NRecoHits",&fNRecoHits);
-  tree->SetBranchAddress("RecoHitTrackID",&fRecoHitTrackID);
-  tree->SetBranchAddress("RecoHitStartTick",&fRecoHitStartTick);
-  tree->SetBranchAddress("RecoHitEndTick",&fRecoHitEndTick);
-  tree->SetBranchAddress("RecoHitPeakTime",&fRecoHitPeakTime);
-  tree->SetBranchAddress("RecoHitSigmaPeakTime",&fRecoHitSigmaPeakTime);
-  tree->SetBranchAddress("RecoHitRMS",&fRecoHitRMS);
-  tree->SetBranchAddress("RecoHitPeakAmplitude",&fRecoHitPeakAmplitude);
-  tree->SetBranchAddress("RecoHitSigmaPeakAmplitude",&fRecoHitSigmaPeakAmplitude);
-  tree->SetBranchAddress("RecoHitSummedADC",&fRecoHitSummedADC);
-  tree->SetBranchAddress("RecoHitIntegral",&fRecoHitIntegral);
-  tree->SetBranchAddress("RecoHitSigmaIntegral",&fRecoHitSigmaIntegral);
-  tree->SetBranchAddress("RecoHitMultiplicity",&fRecoHitMultiplicity);
-  tree->SetBranchAddress("RecoHitLocalIndex",&fRecoHitLocalIndex);
-  tree->SetBranchAddress("RecoHitGoodnessOfFit",&fRecoHitGoodnessOfFit);
-  tree->SetBranchAddress("RecoHitDegreesOfFreedom",&fRecoHitDegreesOfFreedom);
-  tree->SetBranchAddress("RecoHitChannel",&fRecoHitChannel);
-  tree->SetBranchAddress("RecoHitView",&fRecoHitView);
-  tree->SetBranchAddress("RecoHitWireID",&fRecoHitWireID);
-  tree->SetBranchAddress("RecoHitPlaneID",&fRecoHitPlaneID);
-  tree->SetBranchAddress("RecoHitTPCID",&fRecoHitTPCID);
-  tree->SetBranchAddress("RecoHitIsValid",&fRecoHitIsValid);
-  tree->SetBranchAddress("RecoHitCryostatID",&fRecoHitCryostatID);
-  tree->SetBranchAddress("RecoHitWireCenterX",&fRecoHitWireCenterX);
-  tree->SetBranchAddress("RecoHitWireCenterY",&fRecoHitWireCenterY);
-  tree->SetBranchAddress("RecoHitWireCenterZ",&fRecoHitWireCenterZ);
+  tree->SetBranchAddress("ntracks_"+reco_label,&fNRecoTracks);
+  tree->SetBranchAddress("trkdedx_"+reco_label,&trkdedx);
+  tree->SetBranchAddress("trkke_"+reco_label,&trkke);
+  tree->SetBranchAddress("trkrange_"+reco_label,&trkrange);
+  tree->SetBranchAddress("trkidtruth_"+reco_label,&trkidtruth);
+  tree->SetBranchAddress("trkorigin_"+reco_label,&trkorigin);
+  tree->SetBranchAddress("trkpdgtruth_"+reco_label,&trkpdgtruth);
+  tree->SetBranchAddress("trkefftruth_"+reco_label,&trkefftruth);
+  tree->SetBranchAddress("trkpurtruth_"+reco_label,&trkpurtruth);
+  tree->SetBranchAddress("trkpitchc_"+reco_label,&trkpitchc);
+  tree->SetBranchAddress("ntrkhits_"+reco_label,&ntrkhits);
+  tree->SetBranchAddress("trkdedx_"+reco_label,&trkdedx);
+  tree->SetBranchAddress("trkdqdx_"+reco_label,&trkdqdx);
+  tree->SetBranchAddress("trkresrg_"+reco_label,&trkresrg);
+  tree->SetBranchAddress("trktpc_"+reco_label,&trktpc);
+  tree->SetBranchAddress("trkxyz_"+reco_label,&trkxyz);
+  tree->SetBranchAddress("trkId_"+reco_label,&trkId);
+  tree->SetBranchAddress("trkncosmictags_tagger_"+reco_label,&trkncosmictags_tagger);
+  tree->SetBranchAddress("trkcosmicscore_tagger_"+reco_label,&trkcosmicscore_tagger);
+  tree->SetBranchAddress("trkcosmictype_tagger_"+reco_label,&trkcosmictype_tagger);
+  tree->SetBranchAddress("trkncosmictags_containmenttagger_"+reco_label,&trkncosmictags_containmenttagger);
+  tree->SetBranchAddress("trkcosmicscore_containmenttagger_"+reco_label,&trkcosmicscore_containmenttagger);
+  tree->SetBranchAddress("trkcosmictype_containmenttagger_"+reco_label,&trkcosmictype_containmenttagger);
+  tree->SetBranchAddress("trkncosmictags_flashmatch_"+reco_label,&trkncosmictags_flashmatch);
+  tree->SetBranchAddress("trkcosmicscore_flashmatch_"+reco_label,&trkcosmicscore_flashmatch);
+  tree->SetBranchAddress("trkcosmictype_flashmatch_"+reco_label,&trkcosmictype_flashmatch);
+  tree->SetBranchAddress("trkstartx_"+reco_label,&trkstartx);
+  tree->SetBranchAddress("trkstarty_"+reco_label,&trkstarty);
+  tree->SetBranchAddress("trkstartz_"+reco_label,&trkstartz);
+  tree->SetBranchAddress("trkstartd_"+reco_label,&trkstartd);
+  tree->SetBranchAddress("trkendx_"+reco_label,&trkendx);
+  tree->SetBranchAddress("trkendy_"+reco_label,&trkendy);
+  tree->SetBranchAddress("trkendz_"+reco_label,&trkendz);
+  tree->SetBranchAddress("trkendd_"+reco_label,&trkendd);
+  tree->SetBranchAddress("trkflashT0_"+reco_label,&trkflashT0);
+  tree->SetBranchAddress("trktrueT0_"+reco_label,&trktrueT0);
+  tree->SetBranchAddress("trkpurity_"+reco_label,&trkpurity);
+  tree->SetBranchAddress("trkcompleteness_"+reco_label,&trkcompleteness);
+  tree->SetBranchAddress("trkg4id_"+reco_label,&trkg4id);
+  tree->SetBranchAddress("trkorig_"+reco_label,&trkorig);
+  tree->SetBranchAddress("trktheta_"+reco_label,&trktheta);
+  tree->SetBranchAddress("trkphi_"+reco_label,&trkphi);
+  tree->SetBranchAddress("trkstartdcosx_"+reco_label,&trkstartdcosx);
+  tree->SetBranchAddress("trkstartdcosy_"+reco_label,&trkstartdcosy);
+  tree->SetBranchAddress("trkstartdcosz_"+reco_label,&trkstartdcosz);
+  tree->SetBranchAddress("trkenddcosx_"+reco_label,&trkenddcosx);
+  tree->SetBranchAddress("trkenddcosy_"+reco_label,&trkenddcosy);
+  tree->SetBranchAddress("trkenddcosz_"+reco_label,&trkenddcosz);
+  tree->SetBranchAddress("trkthetaxz_"+reco_label,&trkthetaxz);
+  tree->SetBranchAddress("trkthetayz_"+reco_label,&trkthetayz);
+  tree->SetBranchAddress("trkmom_"+reco_label,&trkmom);
+  tree->SetBranchAddress("trklen_"+reco_label,&trklen);
+  tree->SetBranchAddress("trkmomrange_"+reco_label,&trkmomrange);
+  tree->SetBranchAddress("trkmommschi2_"+reco_label,&trkmommschi2);
+  tree->SetBranchAddress("trkmommsllhd_"+reco_label,&trkmommsllhd);
+  tree->SetBranchAddress("trksvtxid_"+reco_label,&trksvtxid);
+  tree->SetBranchAddress("trkevtxid_"+reco_label,&trkevtxid);
+  tree->SetBranchAddress("trkpidpdg_"+reco_label,&trkpidpdg);
+  tree->SetBranchAddress("trkpidchi_"+reco_label,&trkpidchi);
+  tree->SetBranchAddress("trkpidchipr_"+reco_label,&trkpidchipr);
+  tree->SetBranchAddress("trkpidchika_"+reco_label,&trkpidchika);
+  tree->SetBranchAddress("trkpidchipi_"+reco_label,&trkpidchipi);
+  tree->SetBranchAddress("trkpidchimu_"+reco_label,&trkpidchimu);
+  tree->SetBranchAddress("trkpidpida_"+reco_label,&trkpidpida);
+  tree->SetBranchAddress("trkpidmvamu_"+reco_label,&trkpidmvamu);
+  tree->SetBranchAddress("trkpidmvae_"+reco_label,&trkpidmvae);
+  tree->SetBranchAddress("trkpidmvapich_"+reco_label,&trkpidmvapich);
+  tree->SetBranchAddress("trkpidmvaphoton_"+reco_label,&trkpidmvaphoton);
+  tree->SetBranchAddress("trkpidmvapr_"+reco_label,&trkpidmvapr);
+  tree->SetBranchAddress("trkpidbestplane_"+reco_label,&trkpidbestplane);
+  tree->SetBranchAddress("trkhasPFParticle_"+reco_label,&trkhasPFParticle);
+  tree->SetBranchAddress("trkPFParticleID_"+reco_label,&trkPFParticleID);
 
 
 }
 
-std::vector<RecoTrack> RecoTrackFactory::GetRecoTrackVector(){
-  std::vector<RecoTrack> reco_tracks;
-
-  std::map<Int_t, std::vector<RecoHit> > reco_hit_map = ConstructHitMap();
-
-  for (UInt_t i = 0; i < fNRecoTracks; i++){
-    RecoTrack reco_track(
-      fRecoTrackID[i],
-      fRecoTrackG4ID[i],
-      fRecoTrackNumberTrajectoryPoints[i],
-      fRecoTrackFrontPosition[i],
-      fRecoTrackFrontDirection[i],
-      fRecoTrackBackPosition[i],
-      fRecoTrackBackDirection[i],
-      fRecoTrackLength[i],
-      fRecoTrackValidT0[i],
-      fRecoTrackT0[i],
-      fRecoTrackT0CounterIDs[i],
-      fRecoTrackFittedPosition[i],
-      fRecoTrackFittedDirection[i],
-      fRecoTrackFittedMetric[i],
-      fRecoTrackFittedValidT0[i],
-      fRecoTrackFittedT0[i],
-      fRecoTrackFittedT0CounterIDs[i],
-      reco_hit_map[fRecoTrackID[i]]);
-
-    reco_tracks.push_back(reco_track);
-  }
-
-  return reco_tracks;
-}
+    
+     
+   
 
 void RecoTrackFactory::Print(){
-  std::cout<<"NTracks: " << fNRecoTracks << std::endl;
-  for (UInt_t i = 0; i < fNRecoTracks; i++){
-    std::cout<<"--track " << i << "  ID: " << fRecoTrackID[i] << std::endl;
+  for (int i = 0; i < fNRecoTracks; i++){
+    for (int j = 0; j < 3; j++){
+      for (unsigned int k = 0; k < GlobalDefs::kNMaxRecoTrackHits; k++){
+        std::cout<<"Track: " << i << "  Plane: " << j << "  Hit: " << k << "  dedx: " << trkdedx[i][j][k] << std::endl;
+      }
+    }
   }
   return;
 }
 
-std::map<Int_t, std::vector<RecoHit> >& RecoTrackFactory::ConstructHitMap(){
-  static std::map<Int_t, std::vector<RecoHit> > hit_map;
-  hit_map.clear();
-  for (UInt_t i = 0; i < fNRecoHits; i++){
 
-    RecoHit reco_hit(fRecoHitStartTick[i],
-        fRecoHitEndTick[i],
-        fRecoHitPeakTime[i],
-        fRecoHitSigmaPeakTime[i],
-        fRecoHitRMS[i],
-        fRecoHitPeakAmplitude[i],
-        fRecoHitSigmaPeakAmplitude[i],
-        fRecoHitSummedADC[i],
-        fRecoHitIntegral[i],
-        fRecoHitSigmaIntegral[i],
-        fRecoHitMultiplicity[i],
-        fRecoHitLocalIndex[i],
-        fRecoHitGoodnessOfFit[i],
-        fRecoHitDegreesOfFreedom[i],
-        fRecoHitChannel[i],
-        fRecoHitView[i],
-        fRecoHitWireID[i],
-        fRecoHitPlaneID[i],
-        fRecoHitTPCID[i],
-        fRecoHitIsValid[i],
-        fRecoHitCryostatID[i],
-        fRecoHitWireCenterX[i],
-        fRecoHitWireCenterY[i],
-        fRecoHitWireCenterZ[i]);
-
-
-    hit_map[fRecoHitTrackID[i]].push_back(reco_hit);
-  }
-
-  return hit_map;
-}
